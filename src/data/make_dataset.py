@@ -5,7 +5,7 @@ import logging
 from sklearn.model_selection import train_test_split
 
 RAW_DATA_PATH = "./data/raw_data/raw.csv"   
-OUTPUT_PATH = "./data/preprocessed_data"
+OUTPUT_PATH = "./data/processed_data"
 
 def vector_normalize(X):
     ''' Normalize the data using vector normalization
@@ -20,7 +20,8 @@ def split_data():
     '''
     raw_data = pd.read_csv(RAW_DATA_PATH)
     output_file = OUTPUT_PATH + "/"
-    os.makedirs(os.path.dirname(output_folder), exist_ok=True)
+
+    raw_data = raw_data.iloc[:, 1:]
 
     X_train, X_test, y_train, y_test = train_test_split(
         raw_data.drop('silica_concentrate', axis=1),
@@ -36,23 +37,22 @@ def split_data():
 
     return X_train, X_test, y_train, y_test
     
-    def normalize_data(data_sub_set):
-        ''' Normalize the data using vector normalization
-        '''
-        data_np = data_sub_set.values.astype(float)
-        data_scaled=vector_normalize(data_np)
-        return data_scaled
+def normalize_data(data_sub_set):
+    ''' Normalize the data using vector normalization
+    '''
+    data_scaled=vector_normalize(data_sub_set)
+    return data_scaled
 
-     def scale_and_save_data(X_train, X_test):
-        ''' Scale data and save them to output folder
-        '''
-        X_train_scaled = normalize_data(X_train)
-        X_test_scaled = normalize_data(X_test)
+def scale_and_save_data(X_train, X_test):
+    ''' Scale data and save them to output folder
+    '''
+    X_train_scaled = normalize_data(X_train)
+    X_test_scaled = normalize_data(X_test)
 
-        output_file = OUTPUT_PATH + "/"
+    output_file = OUTPUT_PATH + "/"
 
-        X_train_scaled.to_csv(os.path.join(output_file, "X_train_scaled.csv"), index=False)
-        X_test_scaled.to_csv(os.path.join(output_file, "X_test_scaled.csv"), index=False)
+    X_train_scaled.to_csv(os.path.join(output_file, "X_train_scaled.csv"), index=False)
+    X_test_scaled.to_csv(os.path.join(output_file, "X_test_scaled.csv"), index=False)
 
 
 def main():
