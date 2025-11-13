@@ -7,6 +7,8 @@ from sklearn.model_selection import train_test_split
 RAW_DATA_PATH = "./data/raw_data/raw.csv"   
 OUTPUT_PATH = "./data/processed_data"
 
+os.makedirs(OUTPUT_PATH, exist_ok=True)
+
 def vector_normalize(X):
     ''' Normalize the data using vector normalization
     '''
