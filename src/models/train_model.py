@@ -17,10 +17,13 @@ y_test = pd.read_csv(DATA_PATH + 'y_test.csv')
 y_train = np.ravel(y_train)
 y_test = np.ravel(y_test)
 
+print(X_train.shape)
+print(y_train.shape)
+
 def train_model():
     ''' Train Random Forest Regressor model with hyperparameter tuning
     ''' 
-    rf_regression = ensemble.RandomForestRegressor(n_estimators=100, random_state=42)
+    rf_regression = RandomForestRegressor(n_estimators=100, random_state=42)
 
     grid_params = {
         'n_estimators': [50, 100, 200],

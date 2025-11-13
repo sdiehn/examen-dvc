@@ -62,7 +62,7 @@ def main():
     logger.info('making final data set from raw data')
 
     X_train, X_test, y_train, y_test = split_data()
-    scale_and_save_data(X_test, X_train)
+    scale_and_save_data(X_train, X_test)
 
 
 if __name__ == '__main__':
