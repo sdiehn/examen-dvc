@@ -2,6 +2,4 @@
 *.csv
 *.pkl
 *.json
-/data
-/models
-/metrics
+
