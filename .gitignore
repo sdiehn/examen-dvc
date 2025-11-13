@@ -1,6 +1,7 @@
 /venv
 /clean_data.csv
 /data/*
+*.pkl
 
 !data/raw_data/
 !data/processed_data/
