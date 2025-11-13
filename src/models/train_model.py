@@ -11,14 +11,8 @@ DATA_PATH = 'data/processed_data/'
 MODEL_PATH = 'models/'  
 
 X_train = pd.read_csv(DATA_PATH + 'X_train_scaled.csv')
-X_test = pd.read_csv(DATA_PATH + 'X_test_scaled.csv')
 y_train = pd.read_csv(DATA_PATH + 'y_train.csv')
-y_test = pd.read_csv(DATA_PATH + 'y_test.csv')
 y_train = np.ravel(y_train)
-y_test = np.ravel(y_test)
-
-print(X_train.shape)
-print(y_train.shape)
 
 def train_model():
     ''' Train Random Forest Regressor model with hyperparameter tuning
