@@ -1,8 +1,4 @@
 /venv
-/clean_data.csv
-/data/*
+*.csv
 *.pkl
-
-!data/raw_data/
-!data/processed_data/
-!data/*.dvc
+*.json
